@@ -20,10 +20,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m7C-vJ-HgS">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="579"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fw4-dz-uWe">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCell" id="fw4-dz-uWe">
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fw4-dz-uWe" id="733-Xb-0x6">
@@ -37,8 +37,8 @@
                                                         <constraint firstAttribute="height" constant="40" id="DLA-BQ-0CU"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8F6-B3-xRU">
-                                                    <rect key="frame" x="90" y="14" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8F6-B3-xRU">
+                                                    <rect key="frame" x="90" y="14" width="69.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -53,6 +53,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="pGJ-wM-sL6"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Cyx-YL-WoD"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -64,10 +68,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem width="42" systemItem="fixedSpace" id="zaA-uX-IPc"/>
+                        <barButtonItem springLoaded="YES" systemItem="compose" id="hz9-VY-Dlw"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="xSB-iC-Mu2">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="Mst-6i-8ki"/>
+                        <barButtonItem key="rightBarButtonItem" title="編集" id="Mst-6i-8ki"/>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="tableView" destination="m7C-vJ-HgS" id="l3A-ma-4Pl"/>
                         <segue destination="nzc-gU-S3r" kind="show" id="GA4-Nx-1ep"/>
                     </connections>
                 </viewController>
@@ -84,39 +94,57 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CCL-KL-zRW">
-                                <rect key="frame" x="0.0" y="64" width="376" height="539"/>
+                                <rect key="frame" x="0.0" y="114" width="376" height="509"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="タイトル" placeholder="タイトル" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jI1-qq-00Z">
+                                <rect key="frame" x="10" y="74" width="66" height="35"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="CCL-KL-zRW" firstAttribute="top" secondItem="hVc-Jc-6Hj" secondAttribute="top" id="CNm-dB-dyV"/>
+                            <constraint firstItem="CCL-KL-zRW" firstAttribute="top" secondItem="hVc-Jc-6Hj" secondAttribute="top" constant="50" id="CNm-dB-dyV"/>
+                            <constraint firstItem="CCL-KL-zRW" firstAttribute="top" secondItem="jI1-qq-00Z" secondAttribute="bottom" constant="5" id="ERt-Kn-riR"/>
+                            <constraint firstItem="jI1-qq-00Z" firstAttribute="top" secondItem="hVc-Jc-6Hj" secondAttribute="top" constant="10" id="Ko4-Zl-y4L"/>
                             <constraint firstItem="CCL-KL-zRW" firstAttribute="centerX" secondItem="LnY-bX-ioK" secondAttribute="centerX" id="XlH-A8-G4c"/>
-                            <constraint firstItem="CCL-KL-zRW" firstAttribute="centerY" secondItem="LnY-bX-ioK" secondAttribute="centerY" id="eT3-uc-EQf"/>
+                            <constraint firstItem="jI1-qq-00Z" firstAttribute="leading" secondItem="hVc-Jc-6Hj" secondAttribute="leading" constant="10" id="oh4-gl-Q8V"/>
+                            <constraint firstItem="CCL-KL-zRW" firstAttribute="bottom" secondItem="hVc-Jc-6Hj" secondAttribute="bottom" id="sIk-z1-ZLs"/>
                             <constraint firstItem="CCL-KL-zRW" firstAttribute="leading" secondItem="hVc-Jc-6Hj" secondAttribute="leading" id="ugd-uZ-Wys"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hVc-Jc-6Hj"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem systemItem="flexibleSpace" id="x7j-9e-0VH"/>
+                        <barButtonItem title="保存" id="tKU-tk-1pL"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Title" id="1rw-Nq-VpO">
                         <barButtonItem key="backBarButtonItem" title="ooo" id="Qj7-Sn-x3P"/>
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="zuN-16-N3I"/>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q1L-2b-8la" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1556" y="111.99400299850076"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="UvB-jo-rft">
             <objects>
-                <navigationController id="BEs-qa-sOU" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="BEs-qa-sOU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="mVM-oz-2e5"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="s1R-qB-gun">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sB6-g8-h9W">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="EAb-PB-6Pa"/>
                     </connections>
