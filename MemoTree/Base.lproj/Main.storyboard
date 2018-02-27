@@ -88,7 +88,7 @@
         <!--Title-->
         <scene sceneID="afh-0z-SeP">
             <objects>
-                <viewController id="nzc-gU-S3r" sceneMemberID="viewController">
+                <viewController id="nzc-gU-S3r" customClass="memoViewController" customModule="MemoTree" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LnY-bX-ioK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,12 +121,21 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem systemItem="flexibleSpace" id="x7j-9e-0VH"/>
-                        <barButtonItem title="保存" id="tKU-tk-1pL"/>
+                        <barButtonItem tag="1" title="保存" id="tKU-tk-1pL">
+                            <connections>
+                                <action selector="actSaveBtn:" destination="nzc-gU-S3r" id="fPT-dI-pPQ"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Title" id="1rw-Nq-VpO">
                         <barButtonItem key="backBarButtonItem" title="ooo" id="Qj7-Sn-x3P"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="memoAria" destination="CCL-KL-zRW" id="RcN-5d-x8M"/>
+                        <outlet property="saveBtn" destination="tKU-tk-1pL" id="Ykv-nj-cVa"/>
+                        <outlet property="titleField" destination="jI1-qq-00Z" id="vMZ-dM-lyU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q1L-2b-8la" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
