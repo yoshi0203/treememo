@@ -15,16 +15,22 @@ class memoViewController: UIViewController {
     @IBOutlet weak var saveBtn: UIBarButtonItem!
     //(タイトル,本文)
     var memoList = [(String,String)]()
+    let userDefaults: UserDefaults = UserDefaults.standard
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //保存されるリストをゲットしてくる
-        let aaa = memoList[0]
-        
-        titleField.text = aaa.0
-        memoAria.text = aaa.1
-        
+        if userDefaults.object(forKey: appDelegate.memoListTitle) != nil {
+            memoList = userDefaults.object(forKey: appDelegate.memoListTitle) as! [(String, String)]
+            let aaa = memoList[0]
+            titleField.text = aaa.0
+            memoAria.text = aaa.1
+        }else{
+            userDefaults.register(defaults: [appDelegate.memoListTitle : ""])
+            userDefaults.synchronize()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,22 +39,27 @@ class memoViewController: UIViewController {
     }
 
     @IBAction func actSaveBtn(_ sender: UIBarButtonItem) {
-        func memoSave() {
-            var titleVal: String = ""
-            var memoVal: String = ""
-            
-            if titleField.text != nil {
-                titleVal = titleField.text!
-            }
-            
-            if memoAria.text != nil {
-                memoVal = memoAria.text!
-            }
-            
-            let memoSet = (titleVal,memoVal)
-            memoList.append(memoSet)
-        }
+        memoSave()
+        self.dismiss(animated: false, completion: nil)
     }
-    
-   
+    func memoSave() {
+        var titleVal: String = ""
+        var memoVal: String = ""
+        
+        if titleField.text != nil {
+            titleVal = titleField.text!
+        }
+        
+        if memoAria.text != nil {
+            memoVal = memoAria.text!
+        }
+        
+        let memoSet = (titleVal,memoVal)
+        memoList.append(memoSet)
+        let aaa = NSKeyedArchiver.archivedData(withRootObject: memoList )
+        
+        userDefaults.set(aaa, forKey: appDelegate.memoListTitle)
+        userDefaults.synchronize()
+    }
 }
+

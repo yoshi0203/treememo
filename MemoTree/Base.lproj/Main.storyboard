@@ -59,7 +59,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="m7C-vJ-HgS" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="GTQ-n9-5a2"/>
                             <constraint firstItem="m7C-vJ-HgS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Khb-x9-6YN"/>
@@ -70,15 +70,20 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem width="42" systemItem="fixedSpace" id="zaA-uX-IPc"/>
-                        <barButtonItem springLoaded="YES" systemItem="compose" id="hz9-VY-Dlw"/>
+                        <barButtonItem springLoaded="YES" systemItem="compose" id="hz9-VY-Dlw">
+                            <connections>
+                                <action selector="actNewMemoBtn:" destination="BYZ-38-t0r" id="PzD-ce-B1g"/>
+                                <segue destination="oPn-DL-HgK" kind="presentation" id="6RJ-Am-aoF"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="xSB-iC-Mu2">
                         <barButtonItem key="rightBarButtonItem" title="編集" id="Mst-6i-8ki"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="newMemoBtn" destination="hz9-VY-Dlw" id="3hp-Qv-lle"/>
                         <outlet property="tableView" destination="m7C-vJ-HgS" id="l3A-ma-4Pl"/>
-                        <segue destination="nzc-gU-S3r" kind="show" id="GA4-Nx-1ep"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -88,7 +93,7 @@
         <!--Title-->
         <scene sceneID="afh-0z-SeP">
             <objects>
-                <viewController id="nzc-gU-S3r" customClass="memoViewController" customModule="MemoTree" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="memoView" id="nzc-gU-S3r" customClass="memoViewController" customModule="MemoTree" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LnY-bX-ioK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -139,7 +144,27 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q1L-2b-8la" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1556" y="111.99400299850076"/>
+            <point key="canvasLocation" x="2020" y="112"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2Ly-rJ-DU3">
+            <objects>
+                <navigationController toolbarHidden="NO" id="oPn-DL-HgK" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vfh-Pp-WGo">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="guQ-XO-04Q">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="nzc-gU-S3r" kind="relationship" relationship="rootViewController" id="902-T7-JXt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TMr-2g-Sm6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1305" y="112"/>
         </scene>
         <!--Item-->
         <scene sceneID="UvB-jo-rft">
