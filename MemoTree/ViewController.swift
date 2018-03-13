@@ -20,7 +20,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -40,11 +45,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell")!
         if userDefault.object(forKey: "memoDefault") != nil {
-//            let memoList = userDefault.object(forKey: "memoDefault") as! [(String, String)]
-            let memoList = NSKeyedUnarchiver.unarchiveObject(with: userDefault.object(forKey: "memoDefault") as! Data)
-            let aaa = memoList as! [(String , String)]
+            let memoList = userDefault.object(forKey: "memoDefault") as! [[String]]
+            let aaa = memoList[indexPath.row]
             let title = cell.viewWithTag(2) as! UILabel
-            title.text = aaa[indexPath.row].0
+            title.text = aaa[0]
         }
         return cell
     }

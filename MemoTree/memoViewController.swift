@@ -14,7 +14,7 @@ class memoViewController: UIViewController {
     @IBOutlet weak var memoAria: UITextView!
     @IBOutlet weak var saveBtn: UIBarButtonItem!
     //(タイトル,本文)
-    var memoList = [(String,String)]()
+    var memoList: [[String]] = []
     let userDefaults: UserDefaults = UserDefaults.standard
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -23,10 +23,10 @@ class memoViewController: UIViewController {
         
         //保存されるリストをゲットしてくる
         if userDefaults.object(forKey: appDelegate.memoListTitle) != nil {
-            memoList = userDefaults.object(forKey: appDelegate.memoListTitle) as! [(String, String)]
-            let aaa = memoList[0]
-            titleField.text = aaa.0
-            memoAria.text = aaa.1
+            memoList = userDefaults.object(forKey: appDelegate.memoListTitle) as! [[String]]
+            let memoData = memoList[0]
+            titleField.text = memoData[0]
+            memoAria.text = memoData[1]
         }else{
             userDefaults.register(defaults: [appDelegate.memoListTitle : ""])
             userDefaults.synchronize()
@@ -54,12 +54,18 @@ class memoViewController: UIViewController {
             memoVal = memoAria.text!
         }
         
-        let memoSet = (titleVal,memoVal)
+        let memoSet = [titleVal,memoVal]
         memoList.append(memoSet)
-        let aaa = NSKeyedArchiver.archivedData(withRootObject: memoList )
-        
-        userDefaults.set(aaa, forKey: appDelegate.memoListTitle)
+        userDefaults.set(memoList , forKey: appDelegate.memoListTitle)
         userDefaults.synchronize()
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        titleField.resignFirstResponder()
+        memoAria.resignFirstResponder()
+    }
+    @IBAction func keyboardDown(_ sender: Any) {
+    }
+    
 }
 
