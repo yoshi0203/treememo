@@ -38,7 +38,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //セル数設定
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        var memoListCnt = 0
+        if userDefault.object(forKey: "memoDefault") != nil {
+            let memoList = userDefault.object(forKey: "memoDefault") as! [[String]]
+            memoListCnt = memoList.count
+        }
+        return memoListCnt
     }
     
     //セル設定
@@ -52,9 +57,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        memoEdit(cellRow:indexPath.row)
+    }
+    
     @IBAction func actNewMemoBtn(_ sender: UIBarButtonItem) {
         let memoView = self.storyboard?.instantiateViewController(withIdentifier: "memoView")
-        present(memoView!, animated: false ,completion: nil)
+        self.navigationController?.pushViewController(memoView!, animated: true)
+    }
+    
+    func memoEdit(cellRow: Int){
+        appDelegate.cellRow = cellRow
+        let memoView = self.storyboard?.instantiateViewController(withIdentifier: "memoView")
+        self.navigationController?.pushViewController(memoView!, animated: true)
     }
 }
 

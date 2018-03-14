@@ -24,7 +24,7 @@ class memoViewController: UIViewController {
         //保存されるリストをゲットしてくる
         if userDefaults.object(forKey: appDelegate.memoListTitle) != nil {
             memoList = userDefaults.object(forKey: appDelegate.memoListTitle) as! [[String]]
-            let memoData = memoList[0]
+            let memoData = memoList[appDelegate.cellRow ]
             titleField.text = memoData[0]
             memoAria.text = memoData[1]
         }else{
@@ -40,7 +40,7 @@ class memoViewController: UIViewController {
 
     @IBAction func actSaveBtn(_ sender: UIBarButtonItem) {
         memoSave()
-        self.dismiss(animated: false, completion: nil)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     func memoSave() {
         var titleVal: String = ""
