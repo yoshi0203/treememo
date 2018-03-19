@@ -14,7 +14,7 @@ class memoViewController: UIViewController {
     @IBOutlet weak var memoAria: UITextView!
     @IBOutlet weak var saveBtn: UIBarButtonItem!
     //(タイトル,本文)
-    var memoList: [[String]] = []
+    var memoList: [[Any]] = []
     let userDefaults: UserDefaults = UserDefaults.standard
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -23,10 +23,16 @@ class memoViewController: UIViewController {
         
         //保存されるリストをゲットしてくる
         if userDefaults.object(forKey: appDelegate.memoListTitle) != nil {
-            memoList = userDefaults.object(forKey: appDelegate.memoListTitle) as! [[String]]
-            let memoData = memoList[appDelegate.cellRow ]
-            titleField.text = memoData[0]
-            memoAria.text = memoData[1]
+            memoList = userDefaults.object(forKey: appDelegate.memoListTitle) as! [[Any]]
+            if appDelegate.newMemoFlag {
+                appDelegate.newMemoFlag = false
+                titleField.text = ""
+                memoAria.text = ""
+            }else{
+                let memoData = memoList[appDelegate.cellRow] as! [String]
+                titleField.text = memoData[0]
+                memoAria.text = memoData[1]
+            }
         }else{
             userDefaults.register(defaults: [appDelegate.memoListTitle : ""])
             userDefaults.synchronize()
@@ -46,13 +52,13 @@ class memoViewController: UIViewController {
         var titleVal: String = ""
         var memoVal: String = ""
         
-        if titleField.text != nil {
+        if titleField.text != "" {
             titleVal = titleField.text!
+        }else{
+            titleVal = "無題"
         }
         
-        if memoAria.text != nil {
-            memoVal = memoAria.text!
-        }
+        memoVal = memoAria.text!
         
         let memoSet = [titleVal,memoVal]
         memoList.append(memoSet)

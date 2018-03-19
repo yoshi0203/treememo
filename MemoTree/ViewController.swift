@@ -51,9 +51,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell")!
         if userDefault.object(forKey: "memoDefault") != nil {
             let memoList = userDefault.object(forKey: "memoDefault") as! [[String]]
-            let aaa = memoList[indexPath.row]
+            let memoTitle = memoList[indexPath.row]
             let title = cell.viewWithTag(2) as! UILabel
-            title.text = aaa[0]
+            title.text = memoTitle[0]
         }
         return cell
     }
@@ -63,6 +63,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @IBAction func actNewMemoBtn(_ sender: UIBarButtonItem) {
+        appDelegate.newMemoFlag = true
         let memoView = self.storyboard?.instantiateViewController(withIdentifier: "memoView")
         self.navigationController?.pushViewController(memoView!, animated: true)
     }
