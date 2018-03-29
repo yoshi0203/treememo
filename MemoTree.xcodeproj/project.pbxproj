@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D7296FFB2063F991008BDB21 /* ToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7296FFA2063F991008BDB21 /* ToolBar.xib */; };
+		D7296FFF206D38FE008BDB21 /* DoneToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7296FFE206D38FE008BDB21 /* DoneToolBar.swift */; };
 		D72A9E3C203C4FDD00DAB1F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72A9E3B203C4FDD00DAB1F4 /* AppDelegate.swift */; };
 		D72A9E3E203C4FDD00DAB1F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72A9E3D203C4FDD00DAB1F4 /* ViewController.swift */; };
 		D72A9E41203C4FDD00DAB1F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D72A9E3F203C4FDD00DAB1F4 /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D7296FFA2063F991008BDB21 /* ToolBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToolBar.xib; sourceTree = "<group>"; };
+		D7296FFE206D38FE008BDB21 /* DoneToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneToolBar.swift; sourceTree = "<group>"; };
 		D72A9E38203C4FDD00DAB1F4 /* MemoTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D72A9E3B203C4FDD00DAB1F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D72A9E3D203C4FDD00DAB1F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 				D72A9E4A203C4FDD00DAB1F4 /* Info.plist */,
 				D72A9E42203C4FDD00DAB1F4 /* MemoTree.xcdatamodeld */,
 				D7B96B952045836C007ABD05 /* memoViewController.swift */,
+				D7296FFA2063F991008BDB21 /* ToolBar.xib */,
+				D7296FFE206D38FE008BDB21 /* DoneToolBar.swift */,
 			);
 			path = MemoTree;
 			sourceTree = "<group>";
@@ -132,6 +138,7 @@
 				D72A9E49203C4FDD00DAB1F4 /* LaunchScreen.storyboard in Resources */,
 				D72A9E46203C4FDD00DAB1F4 /* Assets.xcassets in Resources */,
 				D72A9E41203C4FDD00DAB1F4 /* Main.storyboard in Resources */,
+				D7296FFB2063F991008BDB21 /* ToolBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +151,7 @@
 			files = (
 				D7B96B962045836C007ABD05 /* memoViewController.swift in Sources */,
 				D72A9E3E203C4FDD00DAB1F4 /* ViewController.swift in Sources */,
+				D7296FFF206D38FE008BDB21 /* DoneToolBar.swift in Sources */,
 				D72A9E3C203C4FDD00DAB1F4 /* AppDelegate.swift in Sources */,
 				D72A9E44203C4FDD00DAB1F4 /* MemoTree.xcdatamodeld in Sources */,
 			);

@@ -70,7 +70,7 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem width="42" systemItem="fixedSpace" id="zaA-uX-IPc"/>
-                        <barButtonItem springLoaded="YES" systemItem="compose" id="hz9-VY-Dlw">
+                        <barButtonItem tag="1" springLoaded="YES" systemItem="compose" id="hz9-VY-Dlw">
                             <connections>
                                 <action selector="actNewMemoBtn:" destination="BYZ-38-t0r" id="PzD-ce-B1g"/>
                             </connections>

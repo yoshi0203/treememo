@@ -13,6 +13,8 @@ class memoViewController: UIViewController {
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var memoAria: UITextView!
     @IBOutlet weak var saveBtn: UIBarButtonItem!
+    @IBOutlet weak var doneBtn: UIBarButtonItem!
+    
     //(タイトル,本文)
     var memoList: [[Any]] = []
     let userDefaults: UserDefaults = UserDefaults.standard
@@ -33,10 +35,19 @@ class memoViewController: UIViewController {
                 titleField.text = memoData[0]
                 memoAria.text = memoData[1]
             }
+            
+            appDelegate.memoArea = memoAria
+            
         }else{
             userDefaults.register(defaults: [appDelegate.memoListTitle : ""])
             userDefaults.synchronize()
         }
+        
+        //キーボードの完了ボタン編集
+        let doneToolBar = UINib(nibName: "ToolBar", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! DoneToolBar
+        doneToolBar.frame = CGRect(x: 0, y: 0, width: 320 , height: 40)
+        doneToolBar.sizeToFit()
+        memoAria.inputAccessoryView = doneToolBar
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,8 +81,5 @@ class memoViewController: UIViewController {
         titleField.resignFirstResponder()
         memoAria.resignFirstResponder()
     }
-    @IBAction func keyboardDown(_ sender: Any) {
-    }
-    
 }
 
