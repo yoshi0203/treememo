@@ -55,6 +55,7 @@ class memoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    //保存ボタン
     @IBAction func actSaveBtn(_ sender: UIBarButtonItem) {
         memoSave()
         self.navigationController?.popToRootViewController(animated: true)
